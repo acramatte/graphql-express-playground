@@ -4,15 +4,18 @@ import {
   GraphQLSchema,
   GraphQLString,
 } from 'graphql';
+const fetch = require('node-fetch');
 
-const BASE_URL = 'https://myapp.com/';
+const BASE_URL = 'http://localhost:4000';
 
 function fetchResponseByURL(relativeURL) {
-  return fetch(`${BASE_URL}${relativeURL}`).then(res => res.json());
+  return fetch(`${BASE_URL}${relativeURL}`).then((res) => {
+    return res.json();
+  });
 }
 
 function fetchPeople() {
-  return fetchResponseByURL('/people/').then(json => json.people);
+  return fetchResponseByURL('/people/').then(json => json);
 }
 
 function fetchPersonByURL(relativeURL) {
@@ -47,7 +50,7 @@ const QueryType = new GraphQLObjectType({
   fields: () => ({
     allPeople: {
       type: new GraphQLList(PersonType),
-      resolve: root => // Fetch the index of people from the REST API,
+      resolve: fetchPeople
     },
     person: {
       type: PersonType,

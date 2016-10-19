@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "first_name": "Konrad",
+    "last_name": "Curze",
+    "email": "konrad@curze.ch",
+    "username": "NightHaunter",
+    "friends": []
+  },
+  {
+    "id": 2,
+    "first_name": "Horus",
+    "last_name": "Lupercal",
+    "email": "horus@lupercal.ch",
+    "username": "thehorus",
+    "friends": []
+  }
+]
