@@ -9,9 +9,7 @@ const fetch = require('node-fetch');
 const BASE_URL = 'http://localhost:4000';
 
 function fetchResponseByURL(relativeURL) {
-  return fetch(`${BASE_URL}${relativeURL}`).then((res) => {
-    return res.json();
-  });
+  return fetch(`${BASE_URL}${relativeURL}`).then(res => res.json());
 }
 
 function fetchPeople() {
