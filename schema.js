@@ -17,7 +17,7 @@ function fetchPeople() {
 }
 
 function fetchPersonByURL(relativeURL) {
-  return fetchResponseByURL(relativeURL).then(json => json.person);
+  return fetchResponseByURL(relativeURL).then(json => json);
 }
 
 const PersonType = new GraphQLObjectType({

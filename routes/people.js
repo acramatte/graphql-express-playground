@@ -6,8 +6,8 @@ router.get('/', function(req, res) {
   res.send(people);
 });
 
-router.get('/about', function(req, res) {
-  res.send('About people');
+router.get('/:id', function(req, res) {
+  res.send(people.find((p) => req.params.id === p.id));
 });
 
 module.exports = router;
