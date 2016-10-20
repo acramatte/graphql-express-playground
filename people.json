@@ -13,6 +13,39 @@
     "last_name": "Lupercal",
     "email": "horus@lupercal.ch",
     "username": "thehorus",
+    "friends": [
+      {
+        "id": "1",
+        "first_name": "Konrad",
+        "last_name": "Curze",
+        "email": "konrad@curze.ch",
+        "username": "NightHaunter",
+        "friends": []
+      },
+      {
+        "id": "3",
+        "first_name": "Kaldor",
+        "last_name": "Draigo",
+        "email": "kaldor@draigo.ch",
+        "username": "theGreyKnight",
+        "friends": []
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "first_name": "Kaldor",
+    "last_name": "Draigo",
+    "email": "kaldor@draigo.ch",
+    "username": "theGreyKnight",
+    "friends": []
+  },
+  {
+    "id": "4",
+    "first_name": "Ibram",
+    "last_name": "Gaunt",
+    "email": "ibram@gaunt.ch",
+    "username": "GauntsGhosts",
     "friends": []
   }
 ]
