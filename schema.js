@@ -37,7 +37,7 @@ const PersonType = new GraphQLObjectType({
     username: {type: GraphQLString},
     friends: {
       type: new GraphQLList(PersonType),
-      resolve: person => person.friends.map(fetchPersonByURL)
+      resolve: person => person.friends.map((friend) => fetchPersonByURL(`/people/${friend.id}/`))
     }
   })
 });
