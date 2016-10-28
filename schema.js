@@ -3,7 +3,8 @@ import {
   GraphQLObjectType,
   GraphQLInputObjectType,
   GraphQLSchema,
-  GraphQLString
+  GraphQLString,
+  GraphQLNonNull
 } from 'graphql';
 const fetch = require('node-fetch');
 
@@ -54,10 +55,10 @@ const PersonType = new GraphQLObjectType({
 const PersonInputType = new GraphQLInputObjectType({
   name: 'PersonInput',
   fields: () => ({
-    firstName: {type: GraphQLString},
-    lastName: {type: GraphQLString},
-    email: {type: GraphQLString},
-    username: {type: GraphQLString},
+    firstName: {type: new GraphQLNonNull(GraphQLString)},
+    lastName: {type: new GraphQLNonNull(GraphQLString)},
+    email: {type: new GraphQLNonNull(GraphQLString)},
+    username: {type: new GraphQLNonNull(GraphQLString)},
     friends: {type: new GraphQLList(PersonInputType)}
   })
 });
