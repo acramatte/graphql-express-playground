@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const fs = require('fs')
+const fs = require('fs');
+const shortid = require('shortid');
 const people = require('../people.json');
 
 router.get('/', (req, res) => {
@@ -16,6 +17,7 @@ router.post('/', (req, res) => {
 });
 
 function saveUser (user, callback) {
+  user.id = shortid.generate();
   people.push(user);
   fs.writeFile('people.json', JSON.stringify(people), (err) => callback());
 }
