@@ -27,11 +27,11 @@ function udpatePersonByUrl(relativeURL, data) {
       method: 'POST',
       body:JSON.stringify(data),
       headers: {'Content-Type': 'application/json'}
-  });
+  }).then(res => res.json());
 }
 
 function deletePersonByUrl(relativeURL) {
-  return fetch(`${BASE_URL}${relativeURL}`, {method: 'DELETE'});
+  return fetch(`${BASE_URL}${relativeURL}`, {method: 'DELETE'}).then(res => res.json());
 }
 
 const PersonType = new GraphQLObjectType({
@@ -95,9 +95,7 @@ const MutationType = new GraphQLObjectType({
       args: {
         id: {type: new GraphQLNonNull(GraphQLString)}
       },
-      resolve: (_, { id }) => {
-        return deletePersonByUrl(`/people/${id}/`);
-      }
+      resolve: (_, { id }) => deletePersonByUrl(`/people/${id}/`)
     },
     addPerson: {
       type: PersonType,
