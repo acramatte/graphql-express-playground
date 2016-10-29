@@ -13,17 +13,17 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  saveUser(req.body, (user) => res.send(user));
+  savePerson(req.body, (person) => res.send(person));
 });
 
 router.delete('/:id', (req, res) => {
-  deletePerson(req.params.id, (user) => res.send(user));
+  deletePerson(req.params.id, (person) => res.send(person));
 });
 
-function saveUser (user, callback) {
-  user.id = shortid.generate();
-  people.push(user);
-  fs.writeFile('people.json', JSON.stringify(people), (err) => callback(user));
+function savePerson (person, callback) {
+  person.id = shortid.generate();
+  people.push(person);
+  fs.writeFile('people.json', JSON.stringify(people), (err) => callback(person));
 }
 
 function deletePerson (id, callback) {
