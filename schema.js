@@ -30,6 +30,10 @@ function udpatePersonByUrl(relativeURL, data) {
   });
 }
 
+function deletePersonByUrl(relativeURL) {
+  return fetch(`${BASE_URL}${relativeURL}`, {method: 'DELETE'});
+}
+
 const PersonType = new GraphQLObjectType({
   name: 'Person',
   description: 'Somebody that you used to know',
@@ -83,8 +87,18 @@ const QueryType = new GraphQLObjectType({
 
 const MutationType = new GraphQLObjectType({
   name: 'Mutation',
-  description: 'functions to create and edit stuff',
+  description: 'functions to create, edit and delete stuff',
   fields: () => ({
+    deletePerson: {
+      type: PersonType,
+      description: 'Delete an person with id and return the deleted person.',
+      args: {
+        id: {type: new GraphQLNonNull(GraphQLString)}
+      },
+      resolve: (_, { id }) => {
+        return deletePersonByUrl(`/people/${id}/`);
+      }
+    },
     addPerson: {
       type: PersonType,
       description: 'Create new person',
