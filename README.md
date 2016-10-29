@@ -51,7 +51,7 @@ mutation deletePerson{
   deletePerson(id: "B1A6qvGxg") {
     firstName,
     lastName,
-    userName
+    username
   }
 }
 ```
