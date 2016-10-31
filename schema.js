@@ -22,7 +22,7 @@ function fetchPersonByURL(relativeURL) {
   return fetchResponseByURL(relativeURL).then(json => json);
 }
 
-function udpatePersonByUrl(relativeURL, data) {
+function createPersonByUrl(relativeURL, data) {
   return fetch(`${BASE_URL}${relativeURL}`, {
       method: 'POST',
       body:JSON.stringify(data),
@@ -103,7 +103,7 @@ const MutationType = new GraphQLObjectType({
       args: {
         person: {type: PersonInputType}
       },
-      resolve: (_, args) => udpatePersonByUrl('/people/', {
+      resolve: (_, args) => createPersonByUrl('/people/', {
         first_name: args.person.firstName,
         last_name: args.person.lastName,
         email: args.person.email.toLowerCase(),
