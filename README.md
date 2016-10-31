@@ -44,6 +44,22 @@ mutation addPerson {
 }
 ```
 
+### Update an existing person:
+
+```
+mutation updateAPerson {
+  updatePerson(person: {
+    id: "PPBqWA9",
+    lastName: "Luperculle"
+  }) {
+    firstName,
+    lastName,
+    id,
+    username
+  }
+}
+```
+
 ### Delete a person:
 
 ```
