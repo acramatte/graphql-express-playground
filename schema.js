@@ -25,7 +25,15 @@ function fetchPersonByURL(relativeURL) {
 function createPersonByUrl(relativeURL, data) {
   return fetch(`${BASE_URL}${relativeURL}`, {
       method: 'POST',
-      body:JSON.stringify(data),
+      body: JSON.stringify(data),
+      headers: {'Content-Type': 'application/json'}
+  }).then(res => res.json());
+}
+
+function updatePersonByUrl(relativeURL, data) {
+  return fetch(`${BASE_URL}${relativeURL}`, {
+      method: 'PUT',
+      body: JSON.stringify(data),
       headers: {'Content-Type': 'application/json'}
   }).then(res => res.json());
 }
@@ -63,6 +71,18 @@ const PersonInputType = new GraphQLInputObjectType({
     lastName: {type: new GraphQLNonNull(GraphQLString)},
     email: {type: new GraphQLNonNull(GraphQLString)},
     username: {type: new GraphQLNonNull(GraphQLString)},
+    friends: {type: new GraphQLList(PersonInputType)}
+  })
+});
+
+const PersonUpdateInputType = new GraphQLInputObjectType({
+  name: 'PersonUpdateInput',
+  fields: () => ({
+    id: {type: new GraphQLNonNull(GraphQLString)},
+    firstName: {type: GraphQLString},
+    lastName: {type: GraphQLString},
+    email: {type: GraphQLString},
+    username: {type: GraphQLString},
     friends: {type: new GraphQLList(PersonInputType)}
   })
 });
@@ -107,6 +127,20 @@ const MutationType = new GraphQLObjectType({
         first_name: args.person.firstName,
         last_name: args.person.lastName,
         email: args.person.email.toLowerCase(),
+        username: args.person.username,
+        friends: args.person.friends
+      })
+    },
+    updatePerson: {
+      type: PersonType,
+      description: 'Update a person',
+      args: {
+        person: {type: PersonUpdateInputType}
+      },
+      resolve: (_, args) => updatePersonByUrl(`/people/${args.person.id}`, {
+        first_name: args.person.firstName,
+        last_name: args.person.lastName,
+        email: args.person.email,
         username: args.person.username,
         friends: args.person.friends
       })

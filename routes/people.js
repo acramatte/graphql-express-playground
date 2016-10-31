@@ -35,7 +35,7 @@ function updatePerson(id, person, callback) {
   const personToUpdate = Object.assign({}, oldPerson, person);
   const newPeoples = people.filter((p) => id !== p.id);
   newPeoples.push(personToUpdate);
-  fs.writeFile('people.json', JSON.stringify(newPeoples), (err) => callback(person));
+  fs.writeFile('people.json', JSON.stringify(newPeoples), (err) => callback(personToUpdate));
 }
 
 function deletePerson (id, callback) {
