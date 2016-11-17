@@ -46,16 +46,19 @@ const PersonType = new GraphQLObjectType({
   name: 'Person',
   description: 'Somebody that you used to know',
   fields: () => ({
+    id: {
+      type: GraphQLString,
+      resolve: person => person._id
+    },
     firstName: {
       type: GraphQLString,
       resolve: person => person.first_name
     },
     lastName: {
       type: GraphQLString,
-      resolve: person => person.last_name,
+      resolve: person => person.last_name
     },
     email: {type: GraphQLString},
-    id: {type: GraphQLString},
     username: {type: GraphQLString},
     friends: {
       type: new GraphQLList(PersonType),
