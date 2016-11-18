@@ -1,1 +1,5 @@
 {"_id":"S1y382s-x","first_name":"Gabriel","last_name":"Angelos","email":"gabriel@ange.los","username":"gabange"}
+{"_id":"B1YOYgp-x","first_name":"Konrad","last_name":"Curze","email":"konrad@curze.ch","username":"NightHaunter"}
+{"_id":"S1Q30eTZg","first_name":"Horus","last_name":"Lupercal","email":"horus@lupercal.ch","username":"thehorus","friends":[{"firstName":"Konrad","lastName":"Curze","email":"konrad@curze.ch","username":"NightHaunter","friends":[]}]}
+{"_id":"Syn81W6bl","first_name":"Kaldor","last_name":"Draigo","email":"kaldor@draigo.ch","username":"theGreyKnight"}
+{"_id":"HJYd1Zp-x","first_name":"Ibram","last_name":"Gaunt","email":"ibram@gaunt.ch","username":"GauntsGhosts"}
